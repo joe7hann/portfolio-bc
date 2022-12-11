@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header id="header">
+    <div class="container d-flex align-items-center justify-content-between">
+        <div class="logo">
+            <h1><a href="{% url 'admin_index' %}">Adminboard<span>.</span></a></h1>
+        </div>
+        <nav id="navbar" class="navbar">
+            <ul>
+                {% if request.user.is_authenticated %}
+                <li><a class="nav-link scrollto" href="{% url 'logout' %}">Logut</a></li>
+                {% endif %}
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+    </div>
+</header>
+
+
+
+<div class="container mt-3">
+    <h3 class="mb-3 text-center">Visitors</h3>
+    <div class="row row-cols-1 g-4">
+        <div class="col d-flex justify-content-center">
+            <div class="card" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-body bg-light">
+                            <table class="table table-striped" style="width: 500px">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="width: 10%">#</th>
+                                        <th scope="col" style="width: 45%">Ip visitor</th>
+                                        <th scope="col" style="width: 45%">Visit at</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for visitor in object_list %}
+                                    <tr>
+                                        <th scope="row">{{visitor.id}}</th>
+                                        <td>{{visitor.ip}}</td>
+                                        <td>{{visitor.visit_at}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <nav aria-label="Page navigation example">
+            <div class="pagination justify-content-center">
+                <span class="step-links mb-5">
+                    {% if page_obj.has_previous %}
+                    <a class="text-primary" href="?page=1">&laquo; Primera</a>
+                    <a class="text-primary" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                    </span>
+            
+                    {% if page_obj.has_next %}
+                    <a class="text-primary" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+                    <a class="text-primary" href="?page={{ page_obj.paginator.num_pages }}">Último &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        </nav>
+    </div>
+</div>
+
+
+
+{% endblock content %}
