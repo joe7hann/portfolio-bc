@@ -24,11 +24,12 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY='django-insecure-fm=xg-x8!!a9l-+bafqn80!t+1anc01cxatm)4maz64v)wdu&q'
 
-SECRET_KEY = env.str('SECRET_KEY')
+#SECRET_KEY = env.str('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-DEBUG = env.bool('DEBUG', default=True)
+DEBUG = True
+#DEBUG = env.bool('DEBUG', default=True)
 
 ALLOWED_HOSTS = ["*"]
 
@@ -81,13 +82,23 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     # read os.environ['DATABASE_URL'] and raises
+#     # ImproperlyConfigured exception if not found
+#     #
+#     # The db() method is an alias for db_url().
+#     #'default': env.db(),
+#     
+# }
 DATABASES = {
-    # read os.environ['DATABASE_URL'] and raises
-    # ImproperlyConfigured exception if not found
-    #
-    # The db() method is an alias for db_url().
-    'default': env.db(),
-
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'railway',
+        'USER': 'root',
+        'PASSWORD': 'I8HJKPwBbQcOXLTrDvOQ',
+        'HOST': 'containers-us-west-41.railway.app',
+        'PORT': '7937',
+    }
 }
 
 
