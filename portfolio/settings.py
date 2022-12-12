@@ -31,9 +31,12 @@ SECRET_KEY='django-insecure-fm=xg-x8!!a9l-+bafqn80!t+1anc01cxatm)4maz64v)wdu&q'
 DEBUG = True
 #DEBUG = env.bool('DEBUG', default=True)
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["https://portfolio-production-ab7c.up.railway.app/"]
 
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://portfolio-production-ab7c.up.railway.app/',
+    '127.0.0.1'
+]
 # Application definition
 
 INSTALLED_APPS = [
