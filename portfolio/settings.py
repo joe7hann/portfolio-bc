@@ -24,7 +24,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY='django-insecure-fm=xg-x8!!a9l-+bafqn80!t+1anc01cxatm)4maz64v)wdu&q'
+SECRET_KEY = 'django-insecure-fm=xg-x8!!a9l-+bafqn80!t+1anc01cxatm)4maz64v)wdu&q'
 
 #SECRET_KEY = env.str('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -33,9 +33,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://portfolio-production-ab7c.up.railway.app/'
-]
+CSRF_TRUSTED_ORIGINS = ['portfolio-production-ab7c.up.railway.app',
+                        'https://portfolio-production-ab7c.up.railway.app']
 # Application definition
 
 INSTALLED_APPS = [
@@ -92,7 +91,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 #     #
 #     # The db() method is an alias for db_url().
 #     #'default': env.db(),
-#     
+#
 # }
 DATABASES = {
     'default': {
@@ -142,9 +141,9 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR,'portfolio/static'),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'portfolio/static'),)
 
-#DEPLOYMENT
+# DEPLOYMENT
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 
@@ -153,6 +152,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL ='login'
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = "admin_index"
-
